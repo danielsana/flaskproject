@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup</title>
+    <!-- css files -->
+    <link rel="stylesheet" href="../static/files/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/files/css/lightslider.css">
+    <link rel="stylesheet" href="../static/files/css/style.css">
+    <!-- js files -->
+    <script src="../static/files/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/files/js/jquery.js"></script>
+    <script src="../static/files/js/lightslider.js"></script>
+    <script src="../static/files/js/script.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        {% include 'navbar.html'%}
+        <section class="row mt-4 mx-auto">
+        <div class="col-md-6">
+        <div class="card shadow p-3">
+        <h3>Create Account</h3>
+
+        <h4 class="text-danger">{{error}}</h4>
+        <h4 class="text-success">{{success}}</h4>
+        <form action="/signup" method="post">
+            <input type="text" name="username" placeholder="Your Name" class="form-control"> <br>
+
+            <input type="email" name="email" placeholder="Your Email" class="form-control"><br>
+
+            <input type="tel" name="phone" placeholder="Your Phone +254" class="form-control"> <br>
+
+            <input type="password" name="password1" placeholder="Your Password" class="form-control"><br>
+
+            <input type="password" name="password2" placeholder="Confirm Password" class="form-control"><br><br>
+
+            <input type="submit" value="Sign Up" class="btn btn-info">
+        </form>
+
+        <br>
+        <a href="/signin">Already Have account? Login</a>
+    </div>
+</div>
+</section>
+{% include 'footer.html'%}
+</div>
+</body>
+</html>

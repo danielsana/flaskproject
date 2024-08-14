@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>product</title>
+    <!-- css files -->
+    <link rel="stylesheet" href="../static/files/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/files/css/lightslider.css">
+    <link rel="stylesheet" href="../static/files/css/style.css">
+    <!-- js files -->
+    <script src="../static/files/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/files/js/jquery.js"></script>
+    <script src="../static/files/js/lightslider.js"></script>
+    <script src="../static/files/js/script.js"></script>
+</head>
+<body>
+    <div class="container-fluid">
+        {% include 'navbar.html' %}
+        
+        <section class="row justify-content-center align-items-center mx-auto mt-4">
+            <div class="col-md-4">
+                <img src="../static/images/{{product[5]}}" alt="" width="300" height="300">
+                <h3 class="display-6 text-warning p-4">{{product[1]}}</h3>
+            </div>
+
+            <div class="col-md-8">
+                <div class="mx-auto" style="max-width: 60%;">
+                <p class="lead text-muted p-2">{{product[2]}}</p>
+                <h4>KES {{product[3]}}</h4>
+                <b class="text-danger"> <span class="display-6 text-warning">Category :</span> {{product[4]}}</b>
+                </div>
+                <div>
+                    <!-- check if user is logged in -->
+                    {% if session['key']%}
+                    <!-- create a form that has an action to mpesa route -->
+                    <div class="card shadow p-4 mx-auto">
+                        <form action="/mpesa" method="post">
+                            <!-- create a phone number input - user will enter the phone number to send STK push to; -->
+                            <input type="number" name="phone" placeholder="Enter phone 2547********" class="form-control">
+    
+                            <!-- find the current product amount from db and bind it in the amount input -->
+                            <label for="">To Pay KES</label>
+    
+                            <input type="number" name="amount" value="{{product[3]}}" class="form-control">
+    
+                            <input type="submit" value="Pay Now" class="btn btn-dark">
+                        </form>
+                    </div>
+                    
+                    {% else%}
+                    <div class="card shadow p-4 mx-auto my-4" style="max-width: 60%;">
+                    <h4 class="mb-4">Please Sign In to make Payment</h4>
+                    <a href="/signin" class="btn btn-dark btn-sm">Sign In</a>
+                    </div>
+                    
+                    {% endif %}
+
+                </div>
+                
+            </div>
+        </section>
+        {% include 'footer.html'%}
+    </div>
+</body>
+</html>

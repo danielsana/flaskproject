@@ -1,0 +1,30 @@
+<section class="row">
+    <div class="col-md-12">
+       <nav class="navbar navbar-expand-md navbar-light btn-light p-3">
+               <a href="/" class="navbar-brand">Soko <b class="text-success">Garden</b></a>
+               <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                   <span class="navbar-toggler-icon"></span>
+              </button>
+               <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav">
+                         <a href="/" class="nav-item nav-link">Home</a>
+                         <a href="/" class="nav-item nav-link">Blog</a>
+                         <a href="/" class="nav-item nav-link">About US</a>
+                    </div>
+                   <div class="ms-auto" style="display: flex;">
+                    <!--    TODO Logout-->
+                    {% if session['key']%}
+                        <!-- if it exits, show the username stored in the key, show  logout button, link the logout button to logout link -->
+                        <p class="p-2 bg-info me-2">Logged in : {{session['key']}}</p>
+                        <a href="/logout" class="btn-outline-danger">Log Out</a>
+
+                    {% else %}
+                        <!-- if it does not exist,  means user has not logged in, give a link to login -->
+                        <a href="/signin">Not Signed In ? Sign In</a>
+                    {% endif %}
+                   </div>
+
+               </div>
+       </nav>
+    </div>
+</section>
